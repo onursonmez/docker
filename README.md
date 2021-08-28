@@ -58,5 +58,13 @@ docker start b40 (container id ile)
 docker stop my_ubuntu (name id ile)
 docker stop f7c (container id ile)
 
+Container silme tekli
+docker rm f8d (container id ile)
+docker rm brave_kalam (container id ile)
 
+Container silme çoklu (container id ile yan yana ilk üç harfleri yeterli)
+docker rm f8d c4h fg9 sjf c7g
+
+Container silme tek seferde (script ile)
+docker container rm $(docker container ls -aq)
 
