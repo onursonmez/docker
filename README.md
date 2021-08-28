@@ -10,7 +10,9 @@ olmadığı için çok hızlı açılıp, kapanır.
 Container nedir?
 Sanal makinalar (VM) farklı olarak containerlar içinde "işletim sistemi olmadan" sadece libraries ve depencies'lar bulunur.
 Böylece çok hızlı açılıp, kapanır. Her bir container içerisinde bir veya birden fazla uygulama (nginx, mongo, redis vb.) kurulabilir.
-Container'lar DockerHost altında gruplanır ve her container'in kendine özel IP'si vardır.
+Container'lar DockerHost altında gruplanır ve her container'in kendine özel IP'si vardır. Docker host üzerinde bulunan containerlar stateless çalışır.
+Yani üzerlerinde herhangi bir bilgi kayıt edilmez. Eğer container durursa içinde yapılan tüm değişiklikler uçar. Bilgilerin kalıcı olması için volume
+kullanılmalıdır.
 
 Dockerhub.com nedir?
 Resmi ve gayriresmi firmalar ve organizasyonlar tarafından uygulamalarının bir container içinde hazır olarak bekletildiği portaldır.
@@ -85,3 +87,25 @@ docker container logs 56fe
 
 Container port mapping
 docker run -p DIS_PORT:IC_PORT redis
+
+Container volume mapping (mongo içindeki /data/db verilerini docker host içinde /opt/data kısmında sakla)
+* Dış kaynağı belirlemek için docker ayarlar -> resources -> file sharing kısmında ilgili klasörü girmelisin 
+docker run -v DIS_SOURCE:IC_SOURCE mongo
+docker run -v /opt/data:/data/db mongo
+
+Çalışan container ile ilgili detaylı bilgi
+docker inspect mongo
+
+Container çalışırken env variable göndererek çalıştırmak
+docker run -e MYSQL_ROOT_PASSWORD=my_secret_password mysql
+
+Container arası link vermek
+docker run --link mysql-server
+
+Link kullanımları
+
+Mysql mysql-server adı ile dış ve iç 3306 portu ile volume kullanılarak, env variable ile, detach olarak çalışsın
+docker run --name mysql-server -p 3306:3306 -v /opt/data:/etc/mysql/conf.d -e MYSQL_ROOT_PASSWORD=test123 -d mysql
+
+Phpmyadmin pma container adı ile, 8000 dış porttan 80 iç porta, mysql-server containerine db aliası ile linkli olarak detach modda çalışsın
+docker run --name pma -p 8000:80 --link mysql-server:db -d phpmyadmin/phpmyadmin
