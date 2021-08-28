@@ -109,3 +109,7 @@ docker run --name mysql-server -p 3306:3306 -v /opt/data:/etc/mysql/conf.d -e MY
 
 Phpmyadmin pma container adı ile, 8000 dış porttan 80 iç porta, mysql-server containerine db aliası ile linkli olarak detach modda çalışsın
 docker run --name pma -p 8000:80 --link mysql-server:db -d phpmyadmin/phpmyadmin
+
+Yukarıdaki parametrelerle oluşturduğumuz isimlendirilmiş containeri run ile değil start ile çalıştırıyoruz
+docker start mysql-server
+docker start pma
