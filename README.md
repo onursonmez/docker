@@ -68,3 +68,15 @@ docker rm f8d c4h fg9 sjf c7g
 Container silme tek seferde (script ile)
 docker container rm $(docker container ls -aq)
 
+Containerdeki uygulamayı spesifik versiyon/sürüm ile çalıştırma (sürümler dockerhub.com da tags bölümündedir)
+docker run redis:5
+
+Bir containeri başka bir isimde klonlamak (redis'i my_redis ismi ile klonlayalım)
+docker image tag redis my_redis
+
+Containeri arka planda çalıştırmak (detach mode)
+docker run -d redis
+
+Arka planda çalıştırmak dockeri öne almak (attach mode, container id ile)
+docker attach 56fe
+
