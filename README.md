@@ -23,6 +23,9 @@ yüklenildiği anlamına gelir.
 Docker nasıl yönetilir?
 Docker kurulduğunda bir GUI arayüzü ile tüm containerlar yönetilebilir. Ancak istersek CLI ile komut satırından hızlı bir biçimde istediğimiz herşeyi yapabiliriz.
 
+Docker network yapısı nasıldır?
+Docker'da bridge, none ve host olmak üzere 3 network vardır. Standart olarak kullandığımız bridge networktür. Docker host altında birbirine bağlı containerlerdan oluşur. None network dışarıdan ve içeriden ulaşılamayan networktür. Örneğin bir log uygulaması çalıştırıyoruz ve hiçbir şekilde dışarıdan veya içeriden erişmeyeceğiz. Bu durumda none network kullanırız.
+
 Docker komutları nedir?
 
 Dockerhub.com dan image'i bilgisayara indirme (indirir, çalıştırmaz)
@@ -102,6 +105,12 @@ docker run -e MYSQL_ROOT_PASSWORD=my_secret_password mysql
 Container arası link vermek
 docker run --link mysql-server
 
+İmajları listelemelek
+docker images
+
+İmaj silmek
+docker rmi ubuntu
+
 Link kullanımları
 
 Mysql mysql-server adı ile dış ve iç 3306 portu ile volume kullanılarak, env variable ile, detach olarak çalışsın
@@ -113,3 +122,21 @@ docker run --name pma -p 8000:80 --link mysql-server:db -d phpmyadmin/phpmyadmin
 Yukarıdaki parametrelerle oluşturduğumuz isimlendirilmiş containeri run ile değil start ile çalıştırıyoruz
 docker start mysql-server
 docker start pma
+
+Containeri bir network ile çalıştırma
+docker run mongo --network=none
+
+Networkleri listeleme
+docker nerwork ls
+
+Bir networku silme
+docker network rm networkadi/id
+
+Bridge network oluşturma
+docker network create --driver bridge --subnet 170.1.0.1/24 --gateway 170.1.0.1 custom-network
+
+Containeri custom network üzerinde çalıştırma (dışarıdan bu networkteki mongoya bağlanmayacağımız için port mapping yapmadık)
+docker run --name mongo-server --net custom-network -d mongo
+
+Containeri custom network üzerinde çalıştırma 2 (mongo ile birlikte çalışacak uygulamamızı da custom network de çalıstıralım ancak erişmek için ip mapping lazım)
+docker run --net custom-network -p 3000:3000 -d my-app
