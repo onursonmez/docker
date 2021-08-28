@@ -60,7 +60,7 @@ docker stop f7c (container id ile)
 
 Container silme tekli
 docker rm f8d (container id ile)
-docker rm brave_kalam (container id ile)
+docker rm brave_kalam (name id ile)
 
 Container silme çoklu (container id ile yan yana ilk üç harfleri yeterli)
 docker rm f8d c4h fg9 sjf c7g
@@ -77,6 +77,11 @@ docker image tag redis my_redis
 Containeri arka planda çalıştırmak (detach mode)
 docker run -d redis
 
-Arka planda çalıştırmak dockeri öne almak (attach mode, container id ile)
+Arka planda çalıştırmak dockeri öne almak (attach mode, container id ile veya name ile)
 docker attach 56fe
 
+Detach modda çalışan container loglarını görmek (container id ile veya name ile)
+docker container logs 56fe
+
+Container port mapping
+docker run -p DIS_PORT:IC_PORT redis
