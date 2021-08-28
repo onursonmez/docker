@@ -72,6 +72,7 @@ docker rm f8d c4h fg9 sjf c7g
 
 Container silme tek seferde (script ile)
 docker container rm $(docker container ls -aq)
+veya docker container prune
 
 Containerdeki uygulamayı spesifik versiyon/sürüm ile çalıştırma (sürümler dockerhub.com da tags bölümündedir)
 docker run redis:5
