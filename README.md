@@ -29,115 +29,114 @@ Docker'da bridge, none ve host olmak üzere 3 network vardır. Standart olarak k
 Docker komutları nedir?<br /><br />
 
 Dockerhub.com dan image'i bilgisayara indirme (indirir, çalıştırmaz)<br />
-<code>docker pull mongo</code><br /><br />
+<code>docker pull mongo</code></code><br /><br />
 
 İndirilen image'ları görme (tag kısmı versiyonudur)<br />
-docker images<br /><br />
+<code>docker images</code><br /><br />
 
 Image çalıştırma (eğer daha önce yüklenmemişse önce yükler sonra çalıştırır)<br />
-docker run mongo<br /><br />
+<code>docker run mongo</code><br /><br />
 
 İnteraktif terminalde image nasıl çalıştırılır (örn. linux işletim sistemleri, çıkmak için exit yazmalıyız)<br />
-docker run -it ubuntu<br /><br />
+<code>docker run -it ubuntu</code><br /><br />
 
 Belli bir süre image nasıl çalıştırılır (5 sn)<br />
-docker run ubuntu sleep 5<br /><br />
+<code>docker run ubuntu sleep 5</code><br /><br />
 
 Çalışan image'ları görüntüleme (names otomatik atılır, dilersek kendimiz name ve param belirterek kendi imagemizi oluşturabiliriz)<br />
-docker ps<br /><br />
+<code>docker ps</code><br /><br />
 
 Geçmişe dönük çalışan containerları görme<br />
-docker ps -a veya docker container ls<br /><br />
+<code>docker ps -a veya docker container ls</code><br /><br />
 
 Çalışan ve çalışmayan tüm containerları görme<br />
-docker container ls -a<br /><br />
+<code>docker container ls -a</code><br /><br />
 
 Containere isim verme (sonrasında docker run my_ubuntu şeklinde çalıştırılır)<br />
-docker run -it --name my_ubuntu ubuntu<br /><br />
+docker run -it --name my_ubuntu ubuntu</code><br /><br />
 
 İsimlendirilmiş containeri çalıştırma (isimden veya container id den, container id'nin ilk 2-3 tanesini yazsak yeterli)<br />
-docker start my_ubuntu (name id ile)<br />
-docker start b40 (container id ile)<br /><br />
+<code>docker start my_ubuntu</code> (name id ile)<br />
+<code>docker start b40</code> (container id ile)<br /><br />
 
 İsimlendirilmiş containeri durdurma (isimden veya container id den, container id'nin ilk 2-3 tanesini yazsak yeterli)<br />
-docker stop my_ubuntu (name id ile)<br />
-docker stop f7c (container id ile)<br /><br />
+<code>docker stop my_ubuntu</code> (name id ile)<br />
+<code>docker stop f7c</code> (container id ile)<br /><br />
 
 Container silme tekli<br />
-docker rm f8d (container id ile)<br />
-docker rm brave_kalam (name id ile)<br /><br />
+<code>docker rm f8d</code> (container id ile)<br />
+<code>docker rm brave_kalam</code> (name id ile)<br /><br />
 
 Container silme çoklu (container id ile yan yana ilk üç harfleri yeterli)<br />
-docker rm f8d c4h fg9 sjf c7g<br /><br />
+<code>docker rm f8d c4h fg9 sjf c7g</code><br /><br />
 
 Container silme tek seferde (script ile)<br />
-docker container rm $(docker container ls -aq)<br />
-veya docker container prune<br /><br />
+<code>docker container rm $(docker container ls -aq) veya<br />
+<code>docker container prune</code><br /><br />
 
 Containerdeki uygulamayı spesifik versiyon/sürüm ile çalıştırma (sürümler dockerhub.com da tags bölümündedir)<br />
-docker run redis:5<br /><br />
+<code>docker run redis:5</code><br /><br />
 
 Bir containeri başka bir isimde klonlamak (redis'i my_redis ismi ile klonlayalım)<br />
-docker image tag redis my_redis<br /><br />
+<code>docker image tag redis my_redis</code><br /><br />
 
 Containeri arka planda çalıştırmak (detach mode)<br />
-docker run -d redis<br /><br />
+<code>docker run -d redis</code><br /><br />
 
 Arka planda çalıştırmak dockeri öne almak (attach mode, container id ile veya name ile)<br />
-docker attach 56fe<br /><br />
+<code>docker attach 56fe</code><br /><br />
 
 Detach modda çalışan container loglarını görmek (container id ile veya name ile)<br />
-docker container logs 56fe<br /><br />
+<code>docker container logs 56fe</code><br /><br />
 
 Container port mapping<br />
-docker run -p DIS_PORT:IC_PORT redis<br /><br />
+<code>docker run -p DIS_PORT:IC_PORT redis</code><br /><br />
 
 Container volume mapping (mongo içindeki /data/db verilerini docker host içinde /opt/data kısmında sakla)<br />
 * Dış kaynağı belirlemek için docker ayarlar -> resources -> file sharing kısmında ilgili klasörü girmelisin <br />
-docker run -v DIS_SOURCE:IC_SOURCE mongo<br />
-docker run -v /opt/data:/data/db mongo<br /><br />
+<code>docker run -v DIS_SOURCE:IC_SOURCE mongo</code><br />
+<code>docker run -v /opt/data:/data/db mongo</code><br /><br />
 
 Çalışan container ile ilgili detaylı bilgi<br />
-docker inspect mongo<br /><br />
+<code>docker inspect mongo</code><br /><br />
 
 Container çalışırken env variable göndererek çalıştırmak<br />
-docker run -e MYSQL_ROOT_PASSWORD=my_secret_password mysql<br /><br />
+<code>docker run -e MYSQL_ROOT_PASSWORD=my_secret_password mysql</code><br /><br />
 
 Container arası link vermek<br />
-docker run --link mysql-server<br /><br />
+<code>docker run --link mysql-server</code><br /><br />
 
 İmajları listelemelek<br />
-docker images<br /><br />
+<code>docker images</code><br /><br />
 
 İmaj silmek<br />
-docker rmi ubuntu<br /><br />
+<code>docker rmi ubuntu</code><br /><br />
 
 Link kullanımları<br /><br />
 
 Mysql mysql-server adı ile dış ve iç 3306 portu ile volume kullanılarak, env variable ile, detach olarak çalışsın<br />
-docker run --name mysql-server -p 3306:3306 -v /opt/data:/etc/mysql/conf.d -e MYSQL_ROOT_PASSWORD=test123 -d mysql<br /><br />
+<code>docker run --name mysql-server -p 3306:3306 -v /opt/data:/etc/mysql/conf.d -e MYSQL_ROOT_PASSWORD=test123 -d mysql</code><br /><br />
 
 Phpmyadmin pma container adı ile, 8000 dış porttan 80 iç porta, mysql-server containerine db aliası ile linkli olarak detach modda çalışsın<br />
-docker run --name pma -p 8000:80 --link mysql-server:db -d phpmyadmin/phpmyadmin<br /><br />
+<code>docker run --name pma -p 8000:80 --link mysql-server:db -d phpmyadmin/phpmyadmin</code><br /><br />
 
 Yukarıdaki parametrelerle oluşturduğumuz isimlendirilmiş containeri run ile değil start ile çalıştırıyoruz<br />
-docker start mysql-server<br />
-docker start pma<br /><br />
+<code>docker start mysql-server</code><br />
+<code>docker start pma</code><br /><br />
 
 Containeri bir network ile çalıştırma<br />
-docker run mongo --network=none<br /><br />
+<code>docker run mongo --network=none</code><br /><br />
 
 Networkleri listeleme<br />
-docker nerwork ls<br /><br />
+<code>docker nerwork ls</code><br /><br />
 
 Bir networku silme<br />
-docker network rm networkadi/id<br /><br />
+<code>docker network rm networkadi/id</code><br /><br />
 
 Bridge network oluşturma<br />
-docker network create --driver bridge --subnet 170.1.0.1/24 --gateway 170.1.0.1 custom-network<br /><br />
+<code>docker network create --driver bridge --subnet 170.1.0.1/24 --gateway 170.1.0.1 custom-network</code><br /><br />
 
 Containeri custom network üzerinde çalıştırma (dışarıdan bu networkteki mongoya bağlanmayacağımız için port mapping yapmadık)<br />
-docker run --name mongo-server --net custom-network -d mongo<br /><br />
+<code>docker run --name mongo-server --net custom-network -d mongo</code><br /><br />
 
-Containeri custom network üzerinde çalıştırma 2 (mongo ile birlikte çalışacak uygulamamızı da custom network de çalıstıralım ancak erişmek için ip mapping lazım)<br />
-docker run --net custom-network -p 3000:3000 -d my-app<br /><br />
+Containeri custom network üzerinde çalıştırma 2 (mongo ile birlikte çalışacak uygulamamızı da custom network de çalıstıralım ancak erişmek için ip mapping lazım)<br /><code>docker run --net custom-network -p 3000:3000 -d my-app</code><br /><br />
