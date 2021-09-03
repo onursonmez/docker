@@ -71,7 +71,7 @@ Container silme çoklu (container id ile yan yana ilk üç harfleri yeterli)<br 
 <code>docker rm f8d c4h fg9 sjf c7g</code><br /><br />
 
 Container silme tek seferde (script ile)<br />
-<code>docker container rm $(docker container ls -aq) veya<br />
+<code>docker container rm $(docker container ls -aq)</code> veya<br />
 <code>docker container prune</code><br /><br />
 
 Containerdeki uygulamayı spesifik versiyon/sürüm ile çalıştırma (sürümler dockerhub.com da tags bölümündedir)<br />
