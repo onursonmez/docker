@@ -52,8 +52,8 @@ Geçmişe dönük çalışan containerları görme<br />
 Çalışan ve çalışmayan tüm containerları görme<br />
 <code>docker container ls -a</code><br /><br />
 
-Containere isim verme (sonrasında docker run my_ubuntu şeklinde çalıştırılır)<br />
-docker run -it --name my_ubuntu ubuntu</code><br /><br />
+Container'a isim verme (sonrasında docker run my_ubuntu şeklinde çalıştırılır)<br />
+<code>docker run -it --name my_ubuntu ubuntu</code><br /><br />
 
 İsimlendirilmiş containeri çalıştırma (isimden veya container id den, container id'nin ilk 2-3 tanesini yazsak yeterli)<br />
 <code>docker start my_ubuntu</code> (name id ile)<br />
