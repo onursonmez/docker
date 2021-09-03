@@ -29,7 +29,7 @@ Docker'da bridge, none ve host olmak üzere 3 network vardır. Standart olarak k
 Docker komutları nedir?<br /><br />
 
 Dockerhub.com dan image'i bilgisayara indirme (indirir, çalıştırmaz)<br />
-docker pull mongo<br /><br />
+<code>docker pull mongo</code><br /><br />
 
 İndirilen image'ları görme (tag kısmı versiyonudur)<br />
 docker images<br /><br />
