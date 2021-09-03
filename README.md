@@ -93,7 +93,7 @@ Container port mapping<br />
 <code>docker run -p DIS_PORT:IC_PORT redis</code><br /><br />
 
 Container volume mapping (mongo içindeki /data/db verilerini docker host içinde /opt/data kısmında sakla)<br />
-* Dış kaynağı belirlemek için docker ayarlar -> resources -> file sharing kısmında ilgili klasörü girmelisin <br />
+İpucu: Dış kaynağı belirlemek için docker ayarlar -> resources -> file sharing kısmında ilgili klasörü girmelisin <br />
 <code>docker run -v DIS_SOURCE:IC_SOURCE mongo</code><br />
 <code>docker run -v /opt/data:/data/db mongo</code><br /><br />
 
