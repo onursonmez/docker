@@ -1,13 +1,13 @@
 # docker
 
-Roket hızda docker notlarım.
+Roket hızda docker notlarım.\\
 
-Docker nedir?
+Docker nedir?\
 Windows, Linux veya Mac işletim sistemlerine kurulabilen, ana işletim sistemi altına çaktırmadan bir ara linux işletim sistemi kurarak containerlarını
 yöneten organizasyondur. Sanal makinelere göre çok hızlıdır. Çünkü ana işletim sisteminin kaynaklarını kullanır ve containerlar içinde işletim sistemi
-olmadığı için çok hızlı açılıp, kapanır.
+olmadığı için çok hızlı açılıp, kapanır.\\
 
-Container nedir?
+Container nedir?\
 Sanal makinalar (VM) farklı olarak containerlar içinde "işletim sistemi olmadan" sadece libraries ve depencies'lar bulunur.
 Böylece çok hızlı açılıp, kapanır. Her bir container içerisinde bir veya birden fazla uygulama (nginx, mongo, redis vb.) kurulabilir.
 Container'lar DockerHost altında gruplanır ve her container'in kendine özel IP'si vardır. Docker host üzerinde bulunan containerlar stateless çalışır.
